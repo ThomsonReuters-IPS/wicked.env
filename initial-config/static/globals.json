@@ -115,12 +115,12 @@
             "callbackURL": "https://portal.yourcompany.com/callback/google"
         },
         "oauth2": {
-            "useOauth2": false,
-            "authorizationURL": "https://identity.yourcompany.com/oauth2/authorize",
-            "tokenURL": "https://identity.yourcompany.com/oauth2/token",
+            "useOauth2": true,
+            "authorizationURL": "https://identity.yourcompany.com/adfs/oauth2/authorize",
+            "tokenURL": "https://identity.yourcompany.com/adfs/oauth2/token",
             "clientID": "this-is-your-client-id",
             "clientSecret": "this-is-your-client-secret",
-            "callbackURL": "https://portal.yourcompany.com/oauth2/callback",
+            "callbackURL": "https://portal.yourcompany.com/callback",
             "customIdField": "upn",
             "firstNameField": "given_name",
             "lastNameField": "family_name",
