@@ -19,15 +19,13 @@ echo "============================================"
 echo "Building normal image..."
 echo "============================================"
 
-docker pull node:6
-docker build -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild .
+docker build --pull -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild --no-cache .
 
 echo "============================================"
 echo "Building alpine image..."
 echo "============================================"
 
-docker pull node:6-alpine
-docker build -f Dockerfile-alpine -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild-alpine .
+docker build --pull -f Dockerfile-alpine -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild-alpine --no-cache .
 
 if [ "$1" = "--push" ]; then
 

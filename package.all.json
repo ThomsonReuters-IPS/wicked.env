@@ -1,5 +1,5 @@
 {
-  "version": "0.12.3",
+  "version": "0.12.5",
   "license": "Apache-2.0",
   "author": "Martin Danielsson",
   "description": "Base package for the portal; contains all package dependencies to speed up Docker build.",
@@ -37,7 +37,6 @@
     "bcrypt-nodejs": "0.0.3",
     "js-yaml": "3.6.0",
     "node-uuid": "1.4.7",
-    "pg": "7.4.0",
     "portal-env": "../portal-env.tgz",
     "nodemailer": "2.5.0",
     "fs-extra": "0.30.0",
