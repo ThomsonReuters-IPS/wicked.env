@@ -31,7 +31,8 @@
         "pgHost": "$PORTAL_STORAGE_PGHOST",
         "pgPort": "5432",
         "pgUser": "kong",
-        "pgPassword": "$PORTAL_STORAGE_PGPASSWORD"
+        "pgPassword": "$PORTAL_STORAGE_PGPASSWORD",
+        "pgDatabase": "wicked"
     },
     "initialUsers": [
         {

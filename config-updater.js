@@ -21,6 +21,7 @@ var updateSteps = {
     12: updateStep12_v1_0_0c,
     13: updateStep13_v1_0_0d,
     14: updateStep14_v1_0_0e,
+    15: updateStep14_v1_0_0f,
 };
 
 updater.updateConfig = function (staticConfigPath, initialStaticConfigPath, configKey) {
@@ -201,6 +202,21 @@ function saveKickstarter(config, kickData) {
     fs.writeFileSync(path.join(config.basePath, 'kickstarter.json'), JSON.stringify(kickData, null, 2));
 }
 
+
+function updateStep14_v1_0_0f(targetConfig, sourceConfig, configKey) {
+    debug('Performing updateStep15');
+
+    const targetGlobals = loadGlobals(targetConfig);
+
+    targetGlobals.version = 15;
+    if (targetGlobals.storage) {
+        // Specify the default postgres database for the wicked data
+        if (!targetGlobals.storage.pgDatabase)
+            targetGlobals.storage.pgDatabase = 'wicked';
+    }
+
+    saveGlobals(targetConfig, targetGlobals);
+}
 
 function updateStep14_v1_0_0e(targetConfig, sourceConfig, configKey) {
     debug('Performing updateStep14');

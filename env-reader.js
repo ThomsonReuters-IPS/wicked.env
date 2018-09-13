@@ -10,6 +10,7 @@ const uuid = require('node-uuid');
 const configUpdater = require('./config-updater');
 const cryptTools = require('./crypt-tools');
 const logger = require('./logger');
+const prometheusMiddleware = require('./prometheus-middleware');
 const containerized = require('containerized');
 
 const envReader = function () { };
@@ -347,5 +348,9 @@ envReader.CorrelationIdHandler = function () {
 // ===== Logger =====
 
 envReader.Logger = logger;
+
+// ===== Prometheus Middleware
+
+envReader.PrometheusMiddleware = prometheusMiddleware;
 
 module.exports = envReader;
