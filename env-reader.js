@@ -3,14 +3,15 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { debug, info, warn, error } = require('./logger')('portal-env:env-reader');
+const { debug, info, warn, error } = require('./src/logger')('portal-env:env-reader');
 const request = require('request');
 const uuid = require('node-uuid');
 
-const configUpdater = require('./config-updater');
-const cryptTools = require('./crypt-tools');
-const logger = require('./logger');
-const prometheusMiddleware = require('./prometheus-middleware');
+const configUpdater = require('./src/config-updater');
+const cryptTools = require('./src/crypt-tools');
+const logger = require('./src/logger');
+const prometheusMiddleware = require('./src/prometheus-middleware');
+const passwordValidator = require('./src/password-validator');
 const containerized = require('containerized');
 
 const envReader = function () { };
@@ -32,7 +33,7 @@ function checkStaticConfigDir(configDir) {
 }
 
 envReader.resolveStaticConfig = function () {
-    debug('resolveStaticConfig():');
+    debug('resolveStaticConfig():');    
     let configDir;
     if (process.env.PORTAL_API_STATIC_CONFIG) {
         configDir = checkStaticConfigDir(process.env.PORTAL_API_STATIC_CONFIG);
@@ -352,5 +353,9 @@ envReader.Logger = logger;
 // ===== Prometheus Middleware
 
 envReader.PrometheusMiddleware = prometheusMiddleware;
+
+// ===== Password Validator
+
+envReader.PasswordValidator = passwordValidator;
 
 module.exports = envReader;

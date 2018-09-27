@@ -21,7 +21,10 @@ var updateSteps = {
     12: updateStep12_v1_0_0c,
     13: updateStep13_v1_0_0d,
     14: updateStep14_v1_0_0e,
-    15: updateStep14_v1_0_0f,
+    15: updateStep15_v1_0_0f,
+    16: updateStep16_v1_0_0g,
+    17: updateStep17_v1_0_0h,
+    18: updateStep18_v1_0_0i,
 };
 
 updater.updateConfig = function (staticConfigPath, initialStaticConfigPath, configKey) {
@@ -202,8 +205,55 @@ function saveKickstarter(config, kickData) {
     fs.writeFileSync(path.join(config.basePath, 'kickstarter.json'), JSON.stringify(kickData, null, 2));
 }
 
+function updateStep18_v1_0_0i(targetConfig, sourceConfig, configKey) {
+    debug('Performing updateStep18');
 
-function updateStep14_v1_0_0f(targetConfig, sourceConfig, configKey) {
+    const targetGlobals = loadGlobals(targetConfig);
+    const sourceGlobals = loadGlobals(sourceConfig);
+
+    if (!targetGlobals.api)
+        targetGlobals.api = {};
+    if (!targetGlobals.api.hasOwnProperty('apiUserGroup'))
+        targetGlobals.api.apiUserGroup = sourceGlobals.api.apiUserGroup;
+    if (!targetGlobals.api.hasOwnProperty('echoUserGroup'))
+        targetGlobals.api.echoUserGroup = sourceGlobals.api.echoUserGroup;
+
+    targetGlobals.version = 18;
+
+    saveGlobals(targetConfig, targetGlobals);
+}
+
+function updateStep17_v1_0_0h(targetConfig, sourceConfig, configKey) {
+    debug('Performing updateStep17');
+
+    const targetGlobals = loadGlobals(targetConfig);
+    const sourceGlobals = loadGlobals(sourceConfig);
+
+    if (!targetGlobals.passwordStrategy)
+        targetGlobals.passwordStrategy = sourceGlobals.passwordStrategy;
+
+    targetGlobals.version = 17;
+
+    saveGlobals(targetConfig, targetGlobals);
+}
+
+function updateStep16_v1_0_0g(targetConfig, sourceConfig, configKey) {
+    debug('Performing updateStep16');
+
+    const targetGlobals = loadGlobals(targetConfig);
+
+    targetGlobals.version = 16;
+    const swaggerCssFile = 'swagger-override.css.mustache';
+    const targetSwaggerCssFile = path.join(targetConfig.contentDir, swaggerCssFile);
+    const sourceSwaggerCssFile = path.join(sourceConfig.contentDir, swaggerCssFile);
+    if (!fs.existsSync(targetSwaggerCssFile)) {
+        copyFile(sourceSwaggerCssFile, targetSwaggerCssFile);
+    }
+
+    saveGlobals(targetConfig, targetGlobals);
+}
+
+function updateStep15_v1_0_0f(targetConfig, sourceConfig, configKey) {
     debug('Performing updateStep15');
 
     const targetGlobals = loadGlobals(targetConfig);

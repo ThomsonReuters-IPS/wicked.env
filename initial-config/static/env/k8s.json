@@ -25,5 +25,8 @@
   },
   "PORTAL_SESSIONSTORE_HOST": {
     "value": "${HELM_NAME}-redis.${K8S_NAMESPACE}.svc.cluster.local"
+  },
+  "PORTAL_STORAGE_PGHOST": {
+    "value": "${HELM_NAME}-kong-database.${K8S_NAMESPACE}.svc.cluster.local"
   }
 }

@@ -3,8 +3,11 @@
     "title": "wicked.haufe.io API Portal",
     "footer": "&copy; 2018 Your Company Ltd.",
     "api": {
-        "headerName": "X-ApiKey"
+        "headerName": "X-ApiKey",
+        "apiUserGroup": "",
+        "echoUserGroup": ""
     },
+    "passwordStrategy": "PW_6_24",
     "network": {
         "schema": "$PORTAL_NETWORK_SCHEMA",
         "apiHost": "$PORTAL_NETWORK_APIHOST",
