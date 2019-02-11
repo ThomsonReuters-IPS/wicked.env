@@ -80,13 +80,13 @@ echo "============================================"
 echo "Building normal image..."
 echo "============================================"
 
-docker build --pull -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild --no-cache .
+docker build --pull -t ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild --no-cache .
 
 echo "============================================"
 echo "Building alpine image..."
 echo "============================================"
 
-docker build --pull -f Dockerfile-alpine -t ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild-alpine --no-cache .
+docker build --pull -f Dockerfile-alpine -t ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild-alpine --no-cache .
 
 if [ "$1" = "--push" ]; then
 
@@ -108,16 +108,16 @@ if [ "$1" = "--push" ]; then
     fi
 
     echo "============================================"
-    echo "Pushing ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild"
+    echo "Pushing ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild"
     echo "============================================"
 
-    docker push ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild
+    docker push ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild
 
     echo "============================================"
-    echo "Pushing ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild-alpine"
+    echo "Pushing ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild-alpine"
     echo "============================================"
     
-    docker push ${DOCKER_PREFIX}portal-env:${DOCKER_TAG}-onbuild-alpine
+    docker push ${DOCKER_PREFIX}env:${DOCKER_TAG}-onbuild-alpine
 else
     if [ ! -z "$1" ]; then
         echo "WARNING: Unknown parameter '$1'; did you mean --push?"

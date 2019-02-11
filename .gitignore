@@ -4,3 +4,4 @@ node_modules
 git_*
 *.tgz
 sdk-tmp
+package-lock.json

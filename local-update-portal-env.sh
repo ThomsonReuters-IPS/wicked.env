@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Use this file after you have made changes to portal-env which you need
+# Use this file after you have made changes to env which you need
 # to propagate into the different packages. This is done by the build scripts
-# automatically via portal-env being the base for all other docker images, but
+# automatically via env being the base for all other docker images, but
 # if you need to update locally, try this.
 
 echo "==== STARTING ==== $0"
@@ -28,15 +28,15 @@ pushd ${currentDir} > /dev/null
 
 envVersion=$(cat package.json | jq '.version' | tr -d '"')
 if [[ -z "${envVersion}" ]]; then
-    echo "ERROR: Could not retrieve portal-env version from package.json"
+    echo "ERROR: Could not retrieve env version from package.json"
     exit 1
 fi
 
-echo "INFO: Updating portal-env in repositories which needs it."
-echo "INFO: portal-env v${envVersion}"
+echo "INFO: Updating env in repositories which needs it."
+echo "INFO: env v${envVersion}"
 
 packageFile="portal-env-${envVersion}.tgz"
-logFile="wicked.portal-env/local-update-portal-env.log"
+logFile="wicked.env/local-update-portal-env.log"
 rm -f portal-env-*
 rm -f ../${packageFile}
 
@@ -49,13 +49,13 @@ if [ "$1" = "--copy" ]; then
 else
     for prefix in "" "wicked."; do
         for wickedDir in \
-            "portal-api" \
-            "portal" \
-            "portal-auth" \
-            "portal-kong-adapter" \
-            "portal-mailer" \
-            "portal-chatbot" \
-            "portal-kickstarter"; do
+            "api" \
+            "ui" \
+            "auth" \
+            "kong-adapter" \
+            "mailer" \
+            "chatbot" \
+            "kickstarter"; do
 
             if [ -d "../${prefix}${wickedDir}" ]; then 
                 echo "INFO: Updating ${prefix}${wickedDir}"
@@ -67,8 +67,9 @@ else
     done
 
     for wickedDir in \
-        "wicked.portal-test/portal-api" \
-        "wicked.portal-test/portal-auth"; do
+        "wicked.test/portal-api" \
+        "wicked.test/portal-kong-adapter" \
+        "wicked.test/portal-auth"; do
 
         if [ -d "../${wickedDir}" ]; then 
             echo "INFO: Updating ${wickedDir}"

@@ -4,16 +4,16 @@ const fs = require('fs');
 const path = require('path');
 
 const dirs = [
-    'wicked.portal',
-    'wicked.portal-api',
-    'wicked.portal-chatbot',
-    'wicked.portal-env',
-    'wicked.portal-kong-adapter',
-    'wicked.portal-mailer',
-    'wicked.portal-kickstarter',
-    'wicked.portal-auth',
-    'wicked.portal-test/portal-api',
-    'wicked.portal-test/portal-kong-adapter'
+    'wicked.ui',
+    'wicked.api',
+    'wicked.chatbot',
+    'wicked.env',
+    'wicked.kong-adapter',
+    'wicked.mailer',
+    'wicked.kickstarter',
+    'wicked.auth',
+    'wicked.test/portal-api',
+    'wicked.test/portal-kong-adapter'
 ];
 
 const baseDir = path.resolve(path.join(__dirname, '..'));

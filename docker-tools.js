@@ -29,7 +29,7 @@ dockerTools.getMatchingTag = function (namespace, imageName, tagName, callback) 
         let fallbackTag = null;
         if (alpineIndex > 0) {
             const baseName = tagName.substring(0, alpineIndex - 1);
-            if (imageName.indexOf('portal-env') > 0) {
+            if (imageName.indexOf('env') > 0) {
                 exactTag = baseName + '-onbuild-alpine';
                 fallbackTag = 'next-onbuild-alpine';
             } else {
@@ -38,7 +38,7 @@ dockerTools.getMatchingTag = function (namespace, imageName, tagName, callback) 
             }
         } else {
             const baseName = tagName;
-            if (imageName.indexOf('portal-env') > 0) {
+            if (imageName.indexOf('env') > 0) {
                 exactTag = baseName + '-onbuild';
                 fallbackTag = 'next-onbuild';
             } else {
