@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "license": "Apache-2.0",
   "author": "Martin Danielsson",
   "description": "Base package for the portal; contains all package dependencies to speed up Docker build.",
@@ -28,6 +28,7 @@
     "jsgrid": "1.5.3",
     "json-stringify-safe": "5.0.1",
     "jsonwebtoken": "5.7.0",
+    "ldapts": "1.9.0",
     "marked": "0.5.2",
     "mocha": "5.2.0",
     "morgan": "1.9.1",
@@ -36,6 +37,7 @@
     "nocache": "^2.0.0",
     "node-uuid": "1.4.7",
     "nodemailer": "4.6.8",
+    "openid-client": "2.5.0",
     "passport": "0.3.2",
     "passport-facebook": "2.1.1",
     "passport-github2": "0.1.10",

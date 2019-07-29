@@ -11,6 +11,7 @@ USER wicked
 COPY . /usr/src/portal-env
 COPY package.all.json /usr/src/app/package.json
 COPY wicked-sdk.tgz /usr/src/app/wicked-sdk.tgz
+COPY forever.sh /usr/src/app/forever.sh
 
 WORKDIR /usr/src/app
 RUN cd /usr/src/portal-env \
@@ -28,4 +29,4 @@ ONBUILD RUN if [ -d ".git" ]; then \
     fi
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["npm", "start" ]
+CMD ["./forever.sh", "npm", "start" ]
