@@ -10,17 +10,18 @@
     "request": "2.88.0",
     "winston": "3.2.1"
   },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "semver": "6.0.0",
+    "mocha": "^6.1.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "main": "env-reader.js",
   "jshintConfig": {
     "node": true,
     "esversion": 6
   },
-  "name": "portal-env",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "semver": "^6.0.0"
-  }
+  "name": "portal-env"
 }
