@@ -212,43 +212,12 @@ function saveKickstarter(config, kickData) {
     fs.writeFileSync(path.join(config.basePath, 'kickstarter.json'), JSON.stringify(kickData, null, 2));
 }
 
-<<<<<<< HEAD
-function updateStep21_MultiRoutes(targetConfig, sourceConfig, configKey) {
-    debug('Performing updateStep21_MultiRoutes');
-=======
 function updateStep21_v1_0_0i(targetConfig, sourceConfig, configKey) {
     debug("Performing updateStep21");
->>>>>>> 3956883e67197eddc572c78cf29eef6bfcab8d3a
 
     const targetGlobals = loadGlobals(targetConfig);
     targetGlobals.version = 21;
 
-<<<<<<< HEAD
-    const apis = loadApis(targetConfig);
-    for (let i = 0; i < apis.apis.length; ++i) {
-        const thisApi = apis.apis[i];
-        const apiConfig = updateRouteServices( loadApiConfig(targetConfig, thisApi.id) );
-
-        info(`Converting API ${thisApi.id} config.`);
-        saveApiConfig(targetConfig, thisApi.id, apiConfig);
-    }
-
-    const authServerNames = loadAuthServerList(targetConfig);
-    for (let i = 0; i < authServerNames.length; ++i) {
-        const asName = authServerNames[i];
-        const as = loadAuthServer(targetConfig, asName);
-        if (as.config && as.config.api) {
-            const apiConfig = updateRouteServices( as.config );
-
-            info(`AuthServer ${asName} config`);
-
-            as.config = apiConfig;
-
-            saveAuthServer(targetConfig, asName, as);
-        }
-    }
-
-=======
     if (targetGlobals.chatbot) {
         const events = targetGlobals.chatbot.events;  // Copy old events to each new hook
         // Check if this file already has a targets variable and skip its updating
@@ -273,7 +242,39 @@ function updateStep21_v1_0_0i(targetConfig, sourceConfig, configKey) {
             delete targetGlobals.chatbot.hookUrls;
         }
     }
->>>>>>> 3956883e67197eddc572c78cf29eef6bfcab8d3a
+    saveGlobals(targetConfig, targetGlobals);
+}
+
+function updateStep21_MultiRoutes(targetConfig, sourceConfig, configKey) {
+    debug('Performing updateStep21_MultiRoutes');
+
+    const targetGlobals = loadGlobals(targetConfig);
+    targetGlobals.version = 21;
+
+    const apis = loadApis(targetConfig);
+    for (let i = 0; i < apis.apis.length; ++i) {
+        const thisApi = apis.apis[i];
+        const apiConfig = updateRouteServices( loadApiConfig(targetConfig, thisApi.id) );
+
+        info(`Converting API ${thisApi.id} config.`);
+        saveApiConfig(targetConfig, thisApi.id, apiConfig);
+    }
+
+    const authServerNames = loadAuthServerList(targetConfig);
+    for (let i = 0; i < authServerNames.length; ++i) {
+        const asName = authServerNames[i];
+        const as = loadAuthServer(targetConfig, asName);
+        if (as.config && as.config.api) {
+            const apiConfig = updateRouteServices( as.config );
+
+            info(`AuthServer ${asName} config`);
+
+            as.config = apiConfig;
+
+            saveAuthServer(targetConfig, asName, as);
+        }
+    }
+
     saveGlobals(targetConfig, targetGlobals);
 }
 
